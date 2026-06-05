@@ -1,0 +1,23 @@
+# Yocto / Poky sources and build outputs
+poky/
+build/
+downloads/
+sstate-cache/
+tmp/
+cache/
+
+# Generated images and SDKs
+*.wic
+*.wic.*
+*.ext4
+*.tar.bz2
+*.tar.zst
+*.manifest
+*.testdata.json
+*.qemuboot.conf
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
