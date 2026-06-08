@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Hello from meta-monkey!"
+echo "This tiny command was installed by a custom Yocto recipe."
