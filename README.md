@@ -155,6 +155,7 @@ Read the docs in order:
 4. [Build and boot core-image-minimal](docs/03-build-and-boot-core-image-minimal.md)
 5. [Add meta-monkey and hello-monkey](docs/04-meta-monkey-hello-recipe.md)
 6. [Create monkey-image-minimal](docs/05-monkey-image-minimal.md)
+7. [Troubleshooting Yocto builds](docs/06-troubleshooting.md)
 
 ## Repository policy
 
