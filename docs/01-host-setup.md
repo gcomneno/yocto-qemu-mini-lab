@@ -1,29 +1,52 @@
 # Host setup notes
 
-This document records the host setup for the `yocto-qemu-mini-lab`.
+This document records the host expectations and package setup for the
+`yocto-qemu-mini-lab`.
 
 The goal is not to create a huge Yocto workstation. The goal is to keep a small,
 reproducible, educational lab that can build and boot a minimal image with QEMU.
 
-## Host snapshot
+## Host expectations
 
-Current machine snapshot:
+This lab was tested on Ubuntu 24.04 LTS with the `qemux86-64` machine target.
 
-- OS: Ubuntu 24.04 LTS
-- CPU cores: 4
-- RAM: 8.8 GiB
-- Swap: 4.0 GiB
-- Root filesystem:
-  - available: 30G
+The first cold Yocto build can still be heavy. This is not a tiny `make hello`
+project: BitBake has to fetch sources, build native tools, build target
+packages, assemble the root filesystem, and produce deployable image artifacts.
 
-LVM snapshot after resize:
+Practical guidance for learners:
 
-- volume group: `ubuntu-vg`
-- logical volume: `ubuntu-lv`
-- LV size: `<30.00g`
-- VG free: `4.00g`
+- 4 CPU cores can work, especially with conservative build settings.
+- Less than 16 GiB RAM can work, but swap pressure is possible.
+- Have significantly more than 30 GiB free before starting the first build.
+- Around 60 GiB free is a safer target for a comfortable learning run.
+- The first cold build can take hours on a small host.
+- BitBake progress is not linear, so a percentage can appear slow for a while.
 
-This is enough for a careful mini-lab, but not a machine for large Yocto builds.
+These numbers are practical expectations for this lab, not official Yocto
+minimum requirements.
+
+For disk recovery and QEMU notes, see:
+
+- [Troubleshooting Yocto builds](06-troubleshooting.md)
+
+## Conservative build settings
+
+For small hosts, this lab recommends conservative local settings in
+`build/conf/local.conf`:
+
+```bitbake
+BB_NUMBER_THREADS = "2"
+PARALLEL_MAKE = "-j2"
+INHERIT += "rm_work"
+```
+
+`BB_NUMBER_THREADS` limits BitBake task scheduling.
+
+`PARALLEL_MAKE` limits parallel compilation inside recipes.
+
+`rm_work` removes many temporary per-recipe work directories after the
+corresponding tasks complete, reducing pressure on disk space.
 
 ## Lab constraints
 
@@ -50,47 +73,95 @@ Prefer:
 
 Yocto requires several host packages to build an image on Ubuntu/Debian.
 
-Planned install command:
+Install command:
 
 ```bash
-sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1```
+sudo apt install \
+  gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio \
+  python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping \
+  python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales \
+  libacl1
 ```
 
 ## Package purpose, roughly
 
-compiler/build tools: gcc, build-essential, make through build-essential
-source/version tools: git, wget
-archive/file tools: unzip, xz-utils, zstd, liblz4-tool, cpio, file
-Yocto support tools: gawk, diffstat, texinfo, chrpath, socat
-Python support: python3, python3-pip, python3-pexpect, python3-git, python3-jinja2, python3-subunit
-system/network helpers: debianutils, iputils-ping
-locale support: locales
-filesystem ACL support: libacl1
+Compiler and build tools:
+
+- `gcc`
+- `build-essential`
+
+Source and version tools:
+
+- `git`
+- `wget`
+
+Archive and file tools:
+
+- `unzip`
+- `xz-utils`
+- `zstd`
+- `liblz4-tool`
+- `cpio`
+- `file`
+
+Yocto support tools:
+
+- `gawk`
+- `diffstat`
+- `texinfo`
+- `chrpath`
+- `socat`
+
+Python support:
+
+- `python3`
+- `python3-pip`
+- `python3-pexpect`
+- `python3-git`
+- `python3-jinja2`
+- `python3-subunit`
+
+System and network helpers:
+
+- `debianutils`
+- `iputils-ping`
+
+Locale support:
+
+- `locales`
+
+Filesystem ACL support:
+
+- `libacl1`
 
 ## Locale
 
 Yocto expects a sane UTF-8 locale.
 
-Planned locale command:
+Check current locale availability with:
 
-```
-sudo locale-gen en_US.UTF-8
-```
-
-Before generating it, check current locale availability with:
-
-```
+```bash
 locale -a | grep -E '^en_US\.utf8$|^en_US\.UTF-8$'
+```
+
+If needed, generate it with:
+
+```bash
+sudo locale-gen en_US.UTF-8
 ```
 
 ## First target
 
-The first real Yocto target will be:
+The first real Yocto target is:
 
-- core-image-minimal
+```text
+core-image-minimal
+```
 
-The first machine target will be QEMU-based, likely:
+The first machine target is:
 
-- qemux86-64
+```text
+qemux86-64
+```
 
-Version/branch/tag of Poky will be decided before cloning.
+This lab currently uses the fixed Poky tag documented in the README.

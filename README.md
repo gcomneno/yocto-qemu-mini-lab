@@ -87,6 +87,25 @@ Machine target:
 qemux86-64
 ```
 
+## Host expectations
+
+This lab was tested on Ubuntu 24.04 LTS with the `qemux86-64` machine target.
+
+The first cold Yocto build can take hours on a small host. BitBake progress is
+not linear, and disk usage can grow quickly while images are being built.
+
+Practical guidance for a comfortable learning run:
+
+- 4 CPU cores can work, especially with conservative build settings.
+- Less than 16 GiB RAM can work, but swap pressure is possible.
+- Have significantly more than 30 GiB free before starting the first build.
+- Around 60 GiB free is a safer target for a smoother learning session.
+- Keep `downloads` and `sstate-cache` when possible.
+- See [Troubleshooting Yocto builds](docs/06-troubleshooting.md) before deleting generated directories.
+
+These are practical expectations for this lab, not official Yocto minimum
+requirements.
+
 ## Quick start
 
 Install the required host packages first. See:
