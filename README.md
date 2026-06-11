@@ -175,7 +175,8 @@ Read the docs in order:
 5. [Add meta-monkey and hello-monkey](docs/04-meta-monkey-hello-recipe.md)
 6. [Create monkey-image-minimal](docs/05-monkey-image-minimal.md)
 7. [Troubleshooting Yocto builds](docs/06-troubleshooting.md)
-8. [Cleanup guide for generated Yocto directories](docs/08-cleanup-guide.md)
+8. [vscode-bitbake workspace walkthrough](docs/07-vscode-bitbake-workspace.md)
+9. [Cleanup guide for generated Yocto directories](docs/08-cleanup-guide.md)
 
 ## Repository policy
 
