@@ -208,3 +208,10 @@ tmp/work       often huge, reduced by rm_work
 ```
 
 The monkey survives if the banana cache survives.
+
+## Related cleanup guide
+
+For a focused explanation of generated Yocto directories and what to keep or
+remove, see:
+
+- [Cleanup guide for generated Yocto directories](08-cleanup-guide.md)
