@@ -10,6 +10,16 @@ Each step includes:
 - the expected result
 - the observed result
 
+## Quick automated preflight
+
+A read-only helper script is available at `scripts/preflight.sh`.
+
+Run it from the repository root with `./scripts/preflight.sh`.
+
+The script prints host information, disk space, RAM and swap summary, required
+command availability, and UTF-8 locale availability. It does not install
+packages, delete files, change configuration, or clone repositories.
+
 ## 1. Check repository status
 
 Command:
