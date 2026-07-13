@@ -187,5 +187,5 @@ separate technical exercise that requires its own build and boot verification.
 
 - [Yocto Project releases](https://www.yoctoproject.org/development/releases/)
 - [Yocto Project release activity and support table](https://wiki.yoctoproject.org/wiki/Releases)
-- [Yocto Project 6.0 Wrynose release notes](https://docs.yoctoproject.org/dev/migration-guides/release-notes-6.0.html)
+- [Yocto Project 6.0 Wrynose release notes](https://docs.yoctoproject.org/6.0/migration-guides/release-notes-6.0.html)
 - [Yocto Project overview and concepts manual](https://docs.yoctoproject.org/overview-manual/)
