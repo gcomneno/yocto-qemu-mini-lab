@@ -81,6 +81,11 @@ Yocto series:
 walnascar
 ```
 
+Walnascar is now end-of-life. It remains pinned here because this educational
+lab was tested against that exact version. See [Why Yocto?](docs/why-yocto.md)
+for the release context and the distinction between a repeatable lab and a
+production release choice.
+
 Machine target:
 
 ```text
@@ -168,15 +173,16 @@ hello-monkey
 
 Read the docs in order:
 
-1. [Roadmap](docs/00-roadmap.md)
-2. [Host setup notes](docs/01-host-setup.md)
-3. [Host preflight runbook](docs/02-host-preflight.md)
-4. [Build and boot core-image-minimal](docs/03-build-and-boot-core-image-minimal.md)
-5. [Add meta-monkey and hello-monkey](docs/04-meta-monkey-hello-recipe.md)
-6. [Create monkey-image-minimal](docs/05-monkey-image-minimal.md)
-7. [Troubleshooting Yocto builds](docs/06-troubleshooting.md)
-8. [vscode-bitbake workspace walkthrough](docs/07-vscode-bitbake-workspace.md)
-9. [Cleanup guide for generated Yocto directories](docs/08-cleanup-guide.md)
+1. [Why Yocto?](docs/why-yocto.md)
+2. [Roadmap](docs/00-roadmap.md)
+3. [Host setup notes](docs/01-host-setup.md)
+4. [Host preflight runbook](docs/02-host-preflight.md)
+5. [Build and boot core-image-minimal](docs/03-build-and-boot-core-image-minimal.md)
+6. [Add meta-monkey and hello-monkey](docs/04-meta-monkey-hello-recipe.md)
+7. [Create monkey-image-minimal](docs/05-monkey-image-minimal.md)
+8. [Troubleshooting Yocto builds](docs/06-troubleshooting.md)
+9. [vscode-bitbake workspace walkthrough](docs/07-vscode-bitbake-workspace.md)
+10. [Cleanup guide for generated Yocto directories](docs/08-cleanup-guide.md)
 
 ## Repository policy
 
